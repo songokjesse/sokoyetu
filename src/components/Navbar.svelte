@@ -1,6 +1,10 @@
 <div class="navbar bg-base-100">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <div class="avatar">
+      <div class="w-10 rounded-full">
+        <img width="15" height="15" alt="logo" src="logo.png" />
+      </div>
+    </div>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal p-0">

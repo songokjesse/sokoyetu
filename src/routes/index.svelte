@@ -1,15 +1,29 @@
+<script context="module">
+    // @ts-ignore
+    export async function load({ fetch}){
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+        const posts = await res.json()
+
+        if(res.ok) {
+            return {
+                props: {
+                    posts
+                }
+            }
+        }
+        return {
+            status: res.status,
+            error: new Error("Could not fetch posts from JSONplaceholder")
+        }
+    }
+</script>
 <script>
-    import Search from "../components/Search.svelte";
-    import HouseList from "../components/HouseList.svelte";
+    export let posts;
+
+import HouseList from "../components/HouseList.svelte";
 </script>
 <div class="container mx-auto px-4">
-
-    <Search/>
-
-    <HouseList/>
-
-
-
+    <HouseList posts={posts}/>
 
     <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 </div>
