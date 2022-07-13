@@ -24,6 +24,4 @@ import HouseList from "../components/HouseList.svelte";
 </script>
 <div class="container mx-auto px-4">
     <HouseList posts={posts}/>
-
-    <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 </div>
