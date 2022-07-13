@@ -1,11 +1,25 @@
+<script>
+  import {user} from "$lib/sessionStore"
+  import {supabase} from "$lib/supabaseClient"
+  user.set(supabase.auth.user())
+
+  supabase.auth.onAuthStateChange((_, session) => {
+    user.set(session.user)
+  })
+</script>
+
+
 <div class="navbar bg-base-100">
   <div class="flex-1">
+    <a href="/">
     <div class="avatar">
       <div class="w-10 rounded-full">
-        <img width="15" height="15" alt="logo" src="logo.png" />
+       <img width="15" height="15" alt="logo" src="logo.png" />
       </div>
     </div>
+    </a>
   </div>
+  {#if $user}
   <div class="flex-none">
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle">
@@ -32,7 +46,7 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li>
-          <a class="justify-between">
+          <a href="/profile" class="justify-between">
             Profile
           </a>
         </li>
@@ -41,4 +55,9 @@
       </ul>
     </div>
   </div>
+    {:else }
+    <div class="navbar-end">
+      <a href="/login" class="btn">Login</a>
+    </div>
+    {/if}
 </div>

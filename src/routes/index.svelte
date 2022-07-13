@@ -19,6 +19,7 @@
 </script>
 <script>
     export let posts;
+    export let title = "Soko Yetu"
 
 import HouseList from "../components/HouseList.svelte";
 </script>
