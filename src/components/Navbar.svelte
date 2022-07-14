@@ -6,6 +6,16 @@
   supabase.auth.onAuthStateChange((_, session) => {
     user.set(session.user)
   })
+
+  async function signOut() {
+    try {
+      let {error} = await supabase.auth.signOut()
+      if (error) throw error
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
 </script>
 
 
@@ -51,7 +61,7 @@
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li><a class="btn"  on:click={signOut}>Logout</a></li>
       </ul>
     </div>
   </div>
